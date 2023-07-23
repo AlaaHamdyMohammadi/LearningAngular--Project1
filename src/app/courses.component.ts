@@ -6,19 +6,28 @@ import { Component } from '@angular/core';
   selector: 'courses',
   template: `
     <h2>{{ title }}</h2>
-    <!-- <button [style.backgroundColor]="isActive ? 'blue' : 'green' "]>click</button> -->
-    <ul>
-      <li *ngFor="let course of courses">{{ course }}</li>
-    </ul>
-    <img [src]="img" alt="" />
+    <!-- <button class="btn btn-primary" (click)="onSave($event)">Save</button> -->
+    <!-- <input #name (keyup.enter)="onKeyUp(name.value)" /> -->
+    <h2>{{course.title | uppercase}}</h2>
+    <h2>{{course.rating | number: '1.1-2'}}</h2>
+    <h2>{{course.students | number}}</h2>
+    <h2>{{course.price | currency}}</h2>
+    <h2>{{course.releaseDate | date}}</h2>
+
   `,
 })
 export class CoursesComponent {
   [x: string]: any;
   title = 'List of courses';
-  isActive = true;
-  img = './../assets/features-03.jpg';
   courses: any;
+
+  course = {
+    title: 'learning Angular',
+    rating: 4.9758,
+    students:2458,
+    price: 190.99,
+    releaseDate: new Date(2023,2 ,5),
+  }
 
   constructor(service: CoursesService) {
     //let service = new CoursesService();
